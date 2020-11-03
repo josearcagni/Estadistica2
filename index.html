@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Josefina Arcagni" />
+
+
+<title>Parcial 2 Estadística II</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+/* A workaround for https://github.com/jgm/pandoc/issues/4278 */
+a.sourceLine {
+  pointer-events: auto;
+}
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<link rel="stylesheet" href="index_files/style.css" type="text/css" />
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<div id="container">
+<div class="inner">
+<header>
+<h1 class="title toc-ignore">Parcial 2 Estadística II</h1>
+<h3 class="author">Josefina Arcagni</h3>
+<h3 class="date">11/3/2020</h3>
+</header>
+
+<hr>
+
+
+<div id="TOC" class="toc">
+<ul>
+<li><a href="#conceptos">Conceptos</a><ul>
+<li><a href="#continua">Continua</a></li>
+<li><a href="#discreta">Discreta</a></li>
+</ul></li>
+<li><a href="#gráficos">Gráficos</a><ul>
+<li><a href="#normalidad-de-datos">Normalidad de Datos</a></li>
+<li><a href="#qq-plot">qq Plot</a></li>
+<li><a href="#plot-results">Plot Results</a></li>
+<li><a href="#boxplot">BoxPlot</a></li>
+<li><a href="#comparar-grupos">Comparar Grupos</a></li>
+<li><a href="#histograma">Histograma</a></li>
+</ul></li>
+<li><a href="#inferencia-basada-en-dos-muestras">Inferencia Basada en Dos Muestras</a><ul>
+<li><a href="#poblaciones-normales-com-varianza-conocida-e-i.c">Poblaciones normales com VARIANZA CONOCIDA e I.C</a></li>
+<li><a href="#varianza-desconocida-y-muestra-grande-e-i.c">Varianza Desconocida y Muestra Grande e I.C</a><ul>
+<li><a href="#intervalo-de-confianza">Intervalo de Confianza</a></li>
+</ul></li>
+<li><a href="#prueba-t-con-dos-muestras-e-intervalo-de-confianza">Prueba t con Dos Muestras e Intervalo de Confianza</a><ul>
+<li><a href="#intervalo-de-confianza-1">Intervalo de Confianza</a></li>
+</ul></li>
+<li><a href="#inferencias-sobre-una-diferencia-entre-proporciones-de-población">Inferencias sobre una diferencia entre PROPORCIONES DE POBLACIÓN</a></li>
+<li><a href="#inferencias-sobre-dos-varianzas-de-población">Inferencias Sobre DOS Varianzas de Población</a></li>
+</ul></li>
+<li><a href="#anova">ANOVA</a><ul>
+<li><a href="#estadístico-de-prueba">Estadístico de Prueba</a></li>
+<li><a href="#efectos">Efectos</a></li>
+<li><a href="#n2">n^2</a></li>
+<li><a href="#aceptación-de-h0">Aceptación de H0</a></li>
+</ul></li>
+<li><a href="#regresión-lineal">Regresión Lineal</a><ul>
+<li><a href="#hallar-las-b">Hallar las B</a></li>
+<li><a href="#modelo">Modelo</a></li>
+<li><a href="#suma-de-cuadrados-del-error">Suma de Cuadrados del Error</a></li>
+<li><a href="#suma-total-de-los-cuadrados">Suma Total de los Cuadrados</a></li>
+<li><a href="#coeficiente-de-correlación">Coeficiente de Correlación</a><ul>
+<li><a href="#coeficiente-de-correlación-muestral">Coeficiente de correlación muestral</a></li>
+</ul></li>
+<li><a href="#test-de-shapiro-ts">Test de Shapiro {ts}</a></li>
+<li><a href="#regresión-lineal-en-r">Regresión lineal en R</a></li>
+<li><a href="#colinealidad">Colinealidad</a></li>
+<li><a href="#interacciones">Interacciones</a></li>
+<li><a href="#modelo-con-muchas-variables">Modelo con Muchas Variables</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="conceptos" class="section level1">
+<h1>Conceptos</h1>
+<table>
+<thead>
+<tr class="header">
+<th>…………….</th>
+<th>No se rechaza H0</th>
+<th>Se rechaza H0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>H0 es cierta</td>
+<td>OK</td>
+<td>Error Tipo 1</td>
+</tr>
+<tr class="even">
+<td>H0 no es cierta</td>
+<td>Error Tipo 2</td>
+<td>OK</td>
+</tr>
+</tbody>
+</table>
+<p>p-valor= es la probabilidad calculada sabiendo que H0 es verdadera. Mientras más chico es, más contradictorios son los datos a H0.</p>
+<p>Rango = max - min</p>
+<p>Distancia Intercuartil = abarca mitad de los datos</p>
+<div id="continua" class="section level2">
+<h2>Continua</h2>
+<ol style="list-style-type: decimal">
+<li>Media: integrate[-inf, inf] x f(x) dx</li>
+<li>Mediana: integrate[-inf, x1] f(x) dx = 0.5</li>
+<li>Moda: max(f(x))</li>
+</ol>
+</div>
+<div id="discreta" class="section level2">
+<h2>Discreta</h2>
+<ol style="list-style-type: decimal">
+<li>Media: sum(xi P(xi))</li>
+<li>Mediana: sum(xi) = 0.5</li>
+<li>Moda: max(P(xi))</li>
+</ol>
+</div>
+</div>
+<div id="gráficos" class="section level1">
+<h1>Gráficos</h1>
+<div id="normalidad-de-datos" class="section level2">
+<h2>Normalidad de Datos</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>mydata&lt;-mtcars<span class="op">$</span>mpg</span>
+<span id="cb1-2"><a href="#cb1-2"></a>mymean&lt;-<span class="st"> </span><span class="kw">mean</span>(mydata)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>mysd&lt;-<span class="st"> </span><span class="kw">sd</span>(mydata)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>mydensity&lt;-<span class="kw">density</span>(mydata)</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="kw">hist</span>(mydata, <span class="dt">probability =</span> T, <span class="dt">col=</span><span class="kw">topo.colors</span>(<span class="dv">12</span>), <span class="dt">main =</span> <span class="st">&quot;&quot;</span>) <span class="co"># histograma con los datos</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">lines</span>(mydensity, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>) <span class="co"># curva empírica</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a>x&lt;-<span class="kw">seq</span>(<span class="dv">5</span>,<span class="dv">40</span>, <span class="dt">by =</span> <span class="fl">0.02</span>) <span class="co"># valores para el eje x del gráfico de la normal teórica. </span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="kw">curve</span>(<span class="kw">dnorm</span>(x, mymean, mysd),</span>
+<span id="cb1-12"><a href="#cb1-12"></a>      <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>) <span class="co"># curva teórica</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;Teórica&quot;, &quot;</span>Empírica<span class="st">&quot;), fill=c(&quot;</span>blue<span class="st">&quot;, &quot;</span>red<span class="st">&quot;))</span></span></code></pre></div>
+<p><img src="index_files/figure-html/g1-1.png" /><!-- --></p>
+</div>
+<div id="qq-plot" class="section level2">
+<h2>qq Plot</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">qqnorm</span>(mydata)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">qqline</span>(mydata)</span></code></pre></div>
+<p><img src="index_files/figure-html/g2-1.png" /><!-- --></p>
+</div>
+<div id="plot-results" class="section level2">
+<h2>Plot Results</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>A&lt;-<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>);</span>
+<span id="cb3-2"><a href="#cb3-2"></a>B&lt;-<span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">11</span>);</span>
+<span id="cb3-3"><a href="#cb3-3"></a>P&lt;-<span class="kw">c</span>(<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>);</span>
+<span id="cb3-4"><a href="#cb3-4"></a>y&lt;-<span class="kw">c</span>(A,B,P);</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">plot</span>(y,<span class="dt">col=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;red&quot;</span>,<span class="kw">length</span>(A)),<span class="kw">rep</span>(<span class="st">&quot;green&quot;</span>,<span class="kw">length</span>(B)),<span class="kw">rep</span>(<span class="st">&quot;blue&quot;</span>,<span class="kw">length</span>(P))),<span class="dt">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<p><img src="index_files/figure-html/g3-1.png" /><!-- --></p>
+</div>
+<div id="boxplot" class="section level2">
+<h2>BoxPlot</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>tipo1&lt;-<span class="kw">c</span>(<span class="fl">655.5</span>, <span class="fl">788.3</span>, <span class="fl">734.3</span>, <span class="fl">721.4</span>, <span class="fl">679.1</span>, <span class="fl">699.4</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>tipo2&lt;-<span class="kw">c</span>(<span class="fl">789.2</span>, <span class="fl">772.5</span>, <span class="fl">786.9</span>, <span class="fl">686.1</span>, <span class="fl">732.1</span>, <span class="fl">774.8</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>tipo3&lt;-<span class="kw">c</span>(<span class="fl">737.1</span>, <span class="fl">639.0</span>, <span class="fl">696.3</span>, <span class="fl">671.7</span>, <span class="fl">717.2</span>, <span class="fl">727.1</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>tipo4&lt;-<span class="kw">c</span>(<span class="fl">535.1</span>, <span class="fl">628.7</span>, <span class="fl">542.4</span>, <span class="fl">559.0</span>, <span class="fl">586.9</span>, <span class="fl">520.0</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="kw">boxplot</span>(tipo1, tipo2, tipo3, tipo4)</span></code></pre></div>
+<p><img src="index_files/figure-html/g4-1.png" /><!-- --></p>
+<ol style="list-style-type: decimal">
+<li>Raya: mediana</li>
+<li>Raya inferior: Q1 (0.25)</li>
+<li>Raya superior: Q3 (0.75)</li>
+<li>Rango Intercuartil: Q3 - Q1</li>
+<li>Bigote Inferior: Q1-1.5*RI</li>
+<li>Bigote Superior: Q3+1.5*RI</li>
+</ol>
+</div>
+<div id="comparar-grupos" class="section level2">
+<h2>Comparar Grupos</h2>
+<p>Si ANOVA es significativo, al menos dos grupos son significativamente diferentes:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>c1&lt;-<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">7</span>,<span class="dv">2</span>,<span class="dv">6</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>c2&lt;-<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">10</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>c3&lt;-<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">13</span>,<span class="dv">15</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>ctotal&lt;-<span class="kw">c</span>(c1,c2,c3)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>categs&lt;-<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;c1&quot;</span>,<span class="dv">5</span>),<span class="kw">rep</span>(<span class="st">&quot;c2&quot;</span>,<span class="dv">5</span>),<span class="kw">rep</span>(<span class="st">&quot;c3&quot;</span>,<span class="dv">5</span>))</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="kw">TukeyHSD</span>(<span class="kw">aov</span>(<span class="kw">c</span>(c1,c2,c3)<span class="op">~</span>categs))</span></code></pre></div>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = c(c1, c2, c3) ~ categs)
+## 
+## $categs
+##       diff       lwr       upr     p adj
+## c2-c1    4 0.4206853  7.579315 0.0286585
+## c3-c1    9 5.4206853 12.579315 0.0000598
+## c3-c2    5 1.4206853  8.579315 0.0075279</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">plot</span>(<span class="kw">TukeyHSD</span>(<span class="kw">aov</span>(<span class="kw">c</span>(c1,c2,c3)<span class="op">~</span>categs)))</span></code></pre></div>
+<p><img src="index_files/figure-html/g5-1.png" /><!-- --></p>
+<ul>
+<li>Diferencias en las medias de cada grupo</li>
+</ul>
+</div>
+<div id="histograma" class="section level2">
+<h2>Histograma</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">hist</span>(mydata, <span class="dt">probability =</span> T, <span class="dt">col=</span><span class="kw">topo.colors</span>(<span class="dv">12</span>), <span class="dt">main =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p><img src="index_files/figure-html/g6-1.png" /><!-- --></p>
+<ul>
+<li>Frecuencias absolutas</li>
+<li>Es un conjunto de rectángulos contiguos en coordenadas</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Calculamos el rango</li>
+<li>Definimos número de categorías</li>
+<li>Tamaño de intervalo</li>
+<li>Registrar categorías</li>
+</ol>
+</div>
+</div>
+<div id="inferencia-basada-en-dos-muestras" class="section level1">
+<h1>Inferencia Basada en Dos Muestras</h1>
+<div id="poblaciones-normales-com-varianza-conocida-e-i.c" class="section level2">
+<h2>Poblaciones normales com VARIANZA CONOCIDA e I.C</h2>
+<ul>
+<li>Tiene dist -N(0,1)</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>Xmues=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>Ymues=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>DifMedias=<span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-4"><a href="#cb9-4"></a>m=<span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-5"><a href="#cb9-5"></a>n=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>VarianzaX=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>VarianzaY=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>a=<span class="st"> </span><span class="fl">0.1</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>Z=<span class="st"> </span>(Xmues <span class="op">-</span><span class="st"> </span>Ymues <span class="op">-</span><span class="st"> </span>DifMedias) <span class="op">/</span><span class="st"> </span>(<span class="kw">sqrt</span>((VarianzaX<span class="op">/</span>m)<span class="op">+</span><span class="st"> </span>(VarianzaY<span class="op">/</span>n)))</span>
+<span id="cb9-10"><a href="#cb9-10"></a>q =<span class="st"> </span><span class="kw">qnorm</span>(a) <span class="co">#a | 1-a | a/2 </span></span>
+<span id="cb9-11"><a href="#cb9-11"></a>Z </span></code></pre></div>
+<pre><code>## [1] -0.7071068</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>q </span></code></pre></div>
+<pre><code>## [1] -1.281552</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>Hipótesis Alternativa</th>
+<th>Región de Rechazo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>mu1- mu2 &gt; d0</td>
+<td>Z &gt; q</td>
+</tr>
+<tr class="even">
+<td>mu1- mu2 &lt; d0</td>
+<td>Z &lt; -q</td>
+</tr>
+<tr class="odd">
+<td>mu1- mu2 ≠ d0</td>
+<td>Z &gt; q</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="varianza-desconocida-y-muestra-grande-e-i.c" class="section level2">
+<h2>Varianza Desconocida y Muestra Grande e I.C</h2>
+<ul>
+<li>Usamos estimador insesgado de la varianza</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>Xmues=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>Ymues=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>DifMedias=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>m=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>n=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>sX=<span class="st"> </span>(<span class="dv">1</span>)<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>sY=<span class="st"> </span>(<span class="dv">1</span>)<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a>a=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>Z=<span class="st"> </span>(Xmues <span class="op">-</span><span class="st"> </span>Ymues <span class="op">-</span><span class="st"> </span>DifMedias) <span class="op">/</span><span class="st"> </span>(<span class="kw">sqrt</span>((sX<span class="op">/</span>m)<span class="op">+</span><span class="st"> </span>(sY<span class="op">/</span>n)))</span>
+<span id="cb13-10"><a href="#cb13-10"></a>Z</span></code></pre></div>
+<pre><code>## [1] -0.7071068</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">qnorm</span>(a) <span class="co">#a | 1-a | a/2 </span></span></code></pre></div>
+<pre><code>## [1] Inf</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>Hipótesis Alternativa</th>
+<th>Región de Rechazo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>mu1- mu2 &gt; d0</td>
+<td>Z &gt; q</td>
+</tr>
+<tr class="even">
+<td>mu1- mu2 &lt; d0</td>
+<td>Z &lt; -q</td>
+</tr>
+<tr class="odd">
+<td>mu1- mu2 ≠ d0</td>
+<td>Z &gt; q</td>
+</tr>
+</tbody>
+</table>
+<div id="intervalo-de-confianza" class="section level3">
+<h3>Intervalo de Confianza</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>Xmues=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>Ymues=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>DifMedias=<span class="st">  </span><span class="dv">1</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>m=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>n=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a>varX=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a>varY=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a>a=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>I1=<span class="st"> </span>Xmues <span class="op">-</span><span class="st"> </span>Ymues <span class="op">-</span><span class="st"> </span><span class="kw">qnorm</span>(a<span class="op">/</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>((varX<span class="op">/</span>m) <span class="op">+</span><span class="st"> </span>(varY<span class="op">/</span>n))</span>
+<span id="cb17-10"><a href="#cb17-10"></a>I2=<span class="st"> </span>Xmues <span class="op">-</span><span class="st"> </span>Ymues <span class="op">+</span><span class="st"> </span><span class="kw">qnorm</span>(a<span class="op">/</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>((varX<span class="op">/</span>m) <span class="op">+</span><span class="st"> </span>(varY<span class="op">/</span>n))</span>
+<span id="cb17-11"><a href="#cb17-11"></a>I1</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>I2</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+</div>
+</div>
+<div id="prueba-t-con-dos-muestras-e-intervalo-de-confianza" class="section level2">
+<h2>Prueba t con Dos Muestras e Intervalo de Confianza</h2>
+<ul>
+<li>Varianza desconocida</li>
+<li>n y m chico ( &lt;40 )</li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>a=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>Xmues=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>Ymues=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>DifMedias=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a>m=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a>n=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb21-7"><a href="#cb21-7"></a>sX=<span class="st"> </span>(<span class="kw">sd</span>(<span class="dv">1</span>))<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a>sY=<span class="st"> </span>(<span class="kw">sd</span>(<span class="dv">1</span>))<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>v=<span class="st"> </span><span class="kw">floor</span>(((sX<span class="op">/</span>m) <span class="op">+</span><span class="st"> </span>(sY<span class="op">/</span>n)) <span class="op">/</span><span class="st"> </span>(((sX<span class="op">/</span>(m<span class="op">^</span><span class="dv">2</span>))<span class="op">/</span>m<span class="dv">-1</span>) <span class="op">+</span><span class="st"> </span>(sY<span class="op">/</span>(n<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>n<span class="dv">-1</span>)))</span>
+<span id="cb21-10"><a href="#cb21-10"></a>Z=<span class="st"> </span>(Xmues <span class="op">-</span><span class="st"> </span>Ymues <span class="op">-</span><span class="st"> </span>DifMedias) <span class="op">/</span><span class="st"> </span>(<span class="kw">sqrt</span>((sX<span class="op">/</span>m)<span class="op">+</span><span class="st"> </span>(sY<span class="op">/</span>n)))</span>
+<span id="cb21-11"><a href="#cb21-11"></a>Z</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">qt</span>(a, v) <span class="co">#a | 1-a | a/2 </span></span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>Hipótesis Alternativa</th>
+<th>Región de Rechazo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>mu1- mu2 &gt; d0</td>
+<td>Z &gt; t</td>
+</tr>
+<tr class="even">
+<td>mu1- mu2 &lt; d0</td>
+<td>Z &lt; -t</td>
+</tr>
+<tr class="odd">
+<td>mu1- mu2 ≠ d0</td>
+<td>Z &gt; t</td>
+</tr>
+</tbody>
+</table>
+<div id="intervalo-de-confianza-1" class="section level3">
+<h3>Intervalo de Confianza</h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>Xmues=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>Ymues=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>DifMedias=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>m=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>n=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a>varX=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a>varY=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a>a=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a>v=<span class="st"> </span><span class="kw">floor</span>(((varX<span class="op">/</span>m) <span class="op">+</span><span class="st"> </span>(varY<span class="op">/</span>n)) <span class="op">/</span><span class="st"> </span>(((varX<span class="op">/</span>(m<span class="op">^</span><span class="dv">2</span>))<span class="op">/</span>m<span class="dv">-1</span>) <span class="op">+</span><span class="st"> </span>(varY<span class="op">/</span>(n<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span>n<span class="dv">-1</span>)))</span>
+<span id="cb25-10"><a href="#cb25-10"></a>I1=<span class="st"> </span>Xmues <span class="op">-</span><span class="st"> </span>Ymues <span class="op">-</span><span class="st"> </span><span class="kw">qt</span>(a<span class="op">/</span><span class="dv">2</span>, v) <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>((varX<span class="op">/</span>m) <span class="op">+</span><span class="st"> </span>(varY<span class="op">/</span>n))</span>
+<span id="cb25-11"><a href="#cb25-11"></a>I2=<span class="st"> </span>Xmues <span class="op">-</span><span class="st"> </span>Ymues <span class="op">+</span><span class="st"> </span><span class="kw">qt</span>(a<span class="op">/</span><span class="dv">2</span>, v) <span class="op">*</span><span class="st"> </span><span class="kw">sqrt</span>((varX<span class="op">/</span>m) <span class="op">+</span><span class="st"> </span>(varY<span class="op">/</span>n))</span>
+<span id="cb25-12"><a href="#cb25-12"></a>I1</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>I2</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+</div>
+</div>
+<div id="inferencias-sobre-una-diferencia-entre-proporciones-de-población" class="section level2">
+<h2>Inferencias sobre una diferencia entre PROPORCIONES DE POBLACIÓN</h2>
+<ul>
+<li>suponemos n y m grande para usar TCL</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>X =<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>Y =<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>m=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a>n=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a>Xmues =<span class="st"> </span>X <span class="op">/</span><span class="st"> </span>m</span>
+<span id="cb29-6"><a href="#cb29-6"></a>Ymues=<span class="st"> </span>Y <span class="op">/</span><span class="st"> </span>n</span>
+<span id="cb29-7"><a href="#cb29-7"></a>DifP=<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb29-8"><a href="#cb29-8"></a>p1=<span class="st"> </span>(X <span class="op">+</span><span class="st"> </span>Y) <span class="op">/</span><span class="st"> </span>(m <span class="op">+</span><span class="st"> </span>n)</span>
+<span id="cb29-9"><a href="#cb29-9"></a>p2=<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span>p1</span>
+<span id="cb29-10"><a href="#cb29-10"></a>sX=<span class="st"> </span>(<span class="kw">sd</span>(<span class="dv">1</span>))<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb29-11"><a href="#cb29-11"></a>sY=<span class="st"> </span>(<span class="kw">sd</span>(<span class="dv">1</span>))<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a>a=<span class="st">  </span><span class="dv">1</span></span>
+<span id="cb29-13"><a href="#cb29-13"></a>Zobs=<span class="st"> </span>(Xmues <span class="op">-</span><span class="st"> </span>Ymues <span class="op">-</span><span class="st"> </span>DifP) <span class="op">/</span><span class="st"> </span>(<span class="kw">sqrt</span>(p1<span class="op">*</span>p2 <span class="op">*</span><span class="st"> </span>((<span class="dv">1</span><span class="op">/</span>m) <span class="op">+</span><span class="st"> </span>(<span class="dv">1</span><span class="op">/</span>n))))</span>
+<span id="cb29-14"><a href="#cb29-14"></a>Zobs</span></code></pre></div>
+<pre><code>## [1] NaN</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="kw">qnorm</span>(a) <span class="co">#a | 1-a | a/2 </span></span></code></pre></div>
+<pre><code>## [1] Inf</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>Hipótesis Alternativa</th>
+<th>Región de Rechazo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>p1 ≠ p2</td>
+<td>Z &gt; q</td>
+</tr>
+<tr class="even">
+<td>p1 &gt; p2</td>
+<td>Z &gt; q</td>
+</tr>
+<tr class="odd">
+<td>p1 &lt; p2</td>
+<td>Z &lt; t</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="inferencias-sobre-dos-varianzas-de-población" class="section level2">
+<h2>Inferencias Sobre DOS Varianzas de Población</h2>
+<ul>
+<li>m y n cantidad de datos</li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>a=<span class="st">  </span><span class="dv">1</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb33-3"><a href="#cb33-3"></a>vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb33-4"><a href="#cb33-4"></a>tita1=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a>tita2 =<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb33-6"><a href="#cb33-6"></a>m=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb33-7"><a href="#cb33-7"></a>n=<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb33-8"><a href="#cb33-8"></a>s1sum=<span class="st"> </span><span class="dv">1</span> <span class="co"># sum ((xi - xmues)/desvío1)^2</span></span>
+<span id="cb33-9"><a href="#cb33-9"></a>s2sum=<span class="st"> </span><span class="dv">1</span> <span class="co"># sum ((yi - ymues)/desvío2)^2</span></span>
+<span id="cb33-10"><a href="#cb33-10"></a>s1 =<span class="st"> </span><span class="kw">sd</span> (vec)</span>
+<span id="cb33-11"><a href="#cb33-11"></a>s2 =<span class="st"> </span><span class="kw">sd</span>(vec)</span>
+<span id="cb33-12"><a href="#cb33-12"></a>f1 =<span class="st"> </span>(s1sum <span class="op">/</span><span class="st"> </span>m<span class="dv">-1</span>) <span class="op">/</span><span class="st"> </span>(s1sum<span class="op">/</span><span class="st"> </span>n<span class="dv">-1</span>)</span>
+<span id="cb33-13"><a href="#cb33-13"></a>f2 =<span class="st"> </span>((s1<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="st"> </span>(tita1<span class="op">^</span><span class="dv">2</span>)) <span class="op">/</span><span class="st"> </span>((s2<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="st"> </span>(tita2<span class="op">^</span><span class="dv">2</span>))</span>
+<span id="cb33-14"><a href="#cb33-14"></a>f1</span></code></pre></div>
+<pre><code>## [1] NaN</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>f2</span></code></pre></div>
+<pre><code>## [1] NaN</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">qf</span>(a, m<span class="dv">-1</span>, n<span class="dv">-1</span>) <span class="co">#a | 1-a | a/2 </span></span></code></pre></div>
+<pre><code>## Warning in qf(a, m - 1, n - 1): NaNs produced</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>Hipótesis Alternativa</th>
+<th>Región de Rechazo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>o1/o2 ≠ 1</td>
+<td>Z &gt; f</td>
+</tr>
+<tr class="even">
+<td>o1/o2 &gt; 1</td>
+<td>Z &gt; f</td>
+</tr>
+<tr class="odd">
+<td>o1/o2 &lt; 1</td>
+<td>Z &lt; f</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="anova" class="section level1">
+<h1>ANOVA</h1>
+<p>Test ANOVA se realiza para determinar si existen diferencias significativas entre las medias de tres o más grupos independientes.</p>
+<div class="line-block">H0: mu1 = mu2 = mu3 … |</div>
+<p>El Test ANOVA mantiene el Error de Tipo 1 en 5%, mientras que muchos t-test, tendrían un porcentaje más alto.</p>
+<ul>
+<li>Las observaciones deben ser independientes</li>
+<li>La variable dependeinte debe seguir una Distribución Normal (se chequea con <a href="Test%20de%20Shapiro">Shapiro</a>)</li>
+</ul>
+<div id="estadístico-de-prueba" class="section level2">
+<h2>Estadístico de Prueba</h2>
+<p>i= cantidad de grupos j= cantidad de observaciones dentro de cada grupo STC = Suma Total de Cuadrados SCI = Suma de Cuadrados Intragrupos SCE = Suma de Cuadrados Entre Grupos</p>
+<ul>
+<li>STC = SCI + SCE</li>
+<li>F = (SCE/ i-1) / (SCI/ (i*(j-1)))</li>
+</ul>
+<p>numerador: Cuadrado de la medio de los tratamientos denominador: Cuadrado de la media del error (CME) y su <em>raíz cuadrada es una estimación de la varianza muestral de todos los datos</em>.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>tipo1&lt;-<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb40-2"><a href="#cb40-2"></a>tipo2&lt;-<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb40-3"><a href="#cb40-3"></a>tipo3&lt;-<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb40-4"><a href="#cb40-4"></a>tipo4&lt;-<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb40-5"><a href="#cb40-5"></a></span>
+<span id="cb40-6"><a href="#cb40-6"></a>I =<span class="st"> </span><span class="dv">4</span> <span class="co"># cantidad de grupos</span></span>
+<span id="cb40-7"><a href="#cb40-7"></a>J =<span class="st"> </span><span class="dv">6</span> <span class="co"># cantidad de observaciones en cada grupo</span></span>
+<span id="cb40-8"><a href="#cb40-8"></a></span>
+<span id="cb40-9"><a href="#cb40-9"></a>mediatotal&lt;-<span class="kw">mean</span>(<span class="kw">c</span>(tipo1,tipo2,tipo3,tipo4))</span>
+<span id="cb40-10"><a href="#cb40-10"></a></span>
+<span id="cb40-11"><a href="#cb40-11"></a>CMTr&lt;-(J<span class="op">/</span>(I<span class="dv">-1</span>))<span class="op">*</span>((<span class="kw">mean</span>(tipo1)<span class="op">-</span>mediatotal)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="kw">mean</span>(tipo2)<span class="op">-</span>mediatotal)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="kw">mean</span>(tipo3)<span class="op">-</span>mediatotal)<span class="op">^</span><span class="dv">2</span><span class="op">+</span>(<span class="kw">mean</span>(tipo4)<span class="op">-</span>mediatotal)<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb40-12"><a href="#cb40-12"></a></span>
+<span id="cb40-13"><a href="#cb40-13"></a>CME&lt;-(<span class="kw">sd</span>(tipo1)<span class="op">^</span><span class="dv">2</span><span class="op">+</span><span class="kw">sd</span>(tipo2)<span class="op">^</span><span class="dv">2</span><span class="op">+</span><span class="kw">sd</span>(tipo3)<span class="op">^</span><span class="dv">2</span><span class="op">+</span><span class="kw">sd</span>(tipo4)<span class="op">^</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">4</span></span>
+<span id="cb40-14"><a href="#cb40-14"></a></span>
+<span id="cb40-15"><a href="#cb40-15"></a>F&lt;-CMTr<span class="op">/</span>CME</span>
+<span id="cb40-16"><a href="#cb40-16"></a></span>
+<span id="cb40-17"><a href="#cb40-17"></a>F</span></code></pre></div>
+<pre><code>## [1] NaN</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="kw">sqrt</span>(CME) <span class="co">#es la varianza muestral de todos los datos</span></span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>ANOVA</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>tipo1&lt;-<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb44-2"><a href="#cb44-2"></a>tipo2&lt;-<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb44-3"><a href="#cb44-3"></a>tipo3&lt;-<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb44-4"><a href="#cb44-4"></a>tipo4&lt;-<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb44-5"><a href="#cb44-5"></a>grupos&lt;-<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;red&quot;</span>,<span class="kw">length</span>(tipo1)),<span class="kw">rep</span>(<span class="st">&quot;green&quot;</span>,<span class="kw">length</span>(tipo2)),<span class="kw">rep</span>(<span class="st">&quot;blue&quot;</span>,<span class="kw">length</span>(tipo3)),<span class="kw">rep</span>(<span class="st">&quot;yellow&quot;</span>,<span class="kw">length</span>(tipo3)))</span>
+<span id="cb44-6"><a href="#cb44-6"></a><span class="kw">summary</span>(<span class="kw">aov</span>(<span class="kw">c</span>(tipo1, tipo2, tipo3, tipo4)<span class="op">~</span>grupos))</span></code></pre></div>
+<pre><code>##             Df    Sum Sq   Mean Sq F value Pr(&gt;F)
+## grupos       3 5.916e-31 1.972e-31       1  0.441
+## Residuals    8 1.578e-30 1.972e-31</code></pre>
+<p>Residual standard error | varianza muestral F value | el valor de F p. valor | mientras más chico más significativo grupos,mean sq | CMT residuals, mean sq | CME grupos, df | grados de libertad</p>
+</div>
+<div id="efectos" class="section level2">
+<h2>Efectos</h2>
+<p>mu = mu1 + ai <em>h0: a1, a2 .. = 0 </em>ha: ai ≠ 0</p>
+<p>Tabla de Efectos:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="kw">model.tables</span>(<span class="kw">aov</span>(<span class="kw">c</span>(tipo1, tipo2, tipo3, tipo4)<span class="op">~</span>grupos))</span></code></pre></div>
+<pre><code>## Tables of effects
+## 
+##  grupos 
+## grupos
+##       blue      green        red     yellow 
+## -1.282e-16 -1.282e-16  3.846e-16 -1.282e-16</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="kw">mean</span>(<span class="kw">c</span>(tipo1,tipo2,tipo3,tipo4))</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>mu + el efecto de la tabla = mean</p>
+</div>
+<div id="n2" class="section level2">
+<h2>n^2</h2>
+<p>mide cuanta varianza en la variable Y es resultado de la variable X.</p>
+<ul>
+<li>n^2 = SCE / STC</li>
+</ul>
+<p>0.01 = pequeño 0.06 = mediano 0.14 = grande</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="kw">model.tables</span>(<span class="kw">aov</span>(<span class="kw">c</span>(tipo1, tipo2, tipo3, tipo4)<span class="op">~</span>grupos))</span></code></pre></div>
+<pre><code>## Tables of effects
+## 
+##  grupos 
+## grupos
+##       blue      green        red     yellow 
+## -1.282e-16 -1.282e-16  3.846e-16 -1.282e-16</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="kw">mean</span>(<span class="kw">c</span>(tipo1,tipo2,tipo3,tipo4))</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>SCE | grupos, sum SCI | residuals, sum</p>
+<p>o más fácil …</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="kw">library</span>(lsr)</span></code></pre></div>
+<pre><code>## Warning: package &#39;lsr&#39; was built under R version 4.0.2</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="kw">etaSquared</span>(<span class="kw">aov</span>(<span class="kw">c</span>(tipo1, tipo2, tipo3, tipo4)<span class="op">~</span>grupos))</span></code></pre></div>
+<pre><code>##        eta.sq eta.sq.part
+## grupos    Inf   0.2727273</code></pre>
+</div>
+<div id="aceptación-de-h0" class="section level2">
+<h2>Aceptación de H0</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Hipótesis Alternativa</th>
+<th>Región de Rechazo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>o1/o2 &gt; 1</td>
+<td>f≥Fα,I−1,I(J−1)</td>
+</tr>
+<tr class="even">
+<td>o1/o2 &lt; 1</td>
+<td>f&lt;Fα,I−1,I(J−1)</td>
+</tr>
+<tr class="odd">
+<td>o1/o2 ≠ 1</td>
+<td>f≥Fα,I−1,I(J−1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="regresión-lineal" class="section level1">
+<h1>Regresión Lineal</h1>
+<p>Crea un recta que representa la tendencia que vemos en la nube de puntos</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>Age&lt;-<span class="kw">c</span>(<span class="dv">67</span>, <span class="dv">40</span>, <span class="dv">68</span>, <span class="dv">64</span>, <span class="dv">47</span>, <span class="dv">71</span>, <span class="dv">54</span>, <span class="dv">59</span>, <span class="dv">46</span>, <span class="dv">52</span>, <span class="dv">57</span>, <span class="dv">63</span>, <span class="dv">45</span>, <span class="dv">55</span>, <span class="dv">48</span>, <span class="dv">51</span>, <span class="dv">48</span>, <span class="dv">77</span>, <span class="dv">38</span>, <span class="dv">61</span>)</span>
+<span id="cb58-2"><a href="#cb58-2"></a>BP&lt;-<span class="kw">c</span>(<span class="dv">185</span>, <span class="dv">154</span>, <span class="dv">198</span>, <span class="dv">189</span>, <span class="dv">168</span>, <span class="dv">200</span>, <span class="dv">166</span>, <span class="dv">190</span>, <span class="dv">155</span>, <span class="dv">172</span>, <span class="dv">180</span>, <span class="dv">173</span>, <span class="dv">176</span>, <span class="dv">172</span>, <span class="dv">150</span>, <span class="dv">176</span>, <span class="dv">155</span>, <span class="dv">192</span>, <span class="dv">154</span>, <span class="dv">185</span>)</span>
+<span id="cb58-3"><a href="#cb58-3"></a></span>
+<span id="cb58-4"><a href="#cb58-4"></a><span class="kw">plot</span>(Age,BP, <span class="dt">pch =</span><span class="dv">16</span>) <span class="co"># seteamos puntos rellenos</span></span></code></pre></div>
+<p><img src="index_files/figure-html/c13-1.png" /><!-- --></p>
+<div class="figure">
+<img src="formula.png" alt="" />
+<p class="caption">Formula</p>
+</div>
+<div id="hallar-las-b" class="section level2">
+<h2>Hallar las B</h2>
+<div class="figure">
+<img src="Betas.png" alt="" />
+<p class="caption">Formula</p>
+</div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>alturahombre&lt;-<span class="kw">c</span>(<span class="fl">1.54</span>, <span class="fl">1.62</span>, <span class="fl">1.70</span>, <span class="fl">1.75</span>, <span class="fl">1.82</span>, <span class="fl">1.89</span>, <span class="fl">1.90</span>)</span>
+<span id="cb59-2"><a href="#cb59-2"></a>alturamujer&lt;-<span class="kw">c</span>(<span class="fl">1.65</span>, <span class="fl">1.65</span>, <span class="fl">1.68</span>, <span class="fl">1.68</span>, <span class="fl">1.70</span>, <span class="fl">1.72</span>, <span class="fl">1.79</span>)</span>
+<span id="cb59-3"><a href="#cb59-3"></a>numerador&lt;-<span class="kw">sum</span>((alturahombre<span class="op">-</span><span class="kw">mean</span>(alturahombre))<span class="op">*</span>(alturamujer<span class="op">-</span><span class="kw">mean</span>(alturamujer)))</span>
+<span id="cb59-4"><a href="#cb59-4"></a>denominador&lt;-<span class="kw">sum</span>((alturahombre<span class="op">-</span><span class="kw">mean</span>(alturahombre))<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb59-5"><a href="#cb59-5"></a>b1&lt;-numerador<span class="op">/</span>denominador</span>
+<span id="cb59-6"><a href="#cb59-6"></a>b0&lt;-<span class="kw">mean</span>(alturamujer)<span class="op">-</span>b1<span class="op">*</span><span class="kw">mean</span>(alturahombre)</span>
+<span id="cb59-7"><a href="#cb59-7"></a>b1</span></code></pre></div>
+<pre><code>## [1] 0.3096039</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>b0</span></code></pre></div>
+<pre><code>## [1] 1.155234</code></pre>
+</div>
+<div id="modelo" class="section level2">
+<h2>Modelo</h2>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>alturasmujerEstimadas&lt;-b0<span class="op">+</span>b1<span class="op">*</span>alturahombre</span>
+<span id="cb63-2"><a href="#cb63-2"></a></span>
+<span id="cb63-3"><a href="#cb63-3"></a><span class="co"># generación del modelo en r:</span></span>
+<span id="cb63-4"><a href="#cb63-4"></a>modelo&lt;-<span class="kw">lm</span>(alturamujer<span class="op">~</span>alturahombre)</span>
+<span id="cb63-5"><a href="#cb63-5"></a>modelo<span class="op">$</span>coefficients</span></code></pre></div>
+<pre><code>##  (Intercept) alturahombre 
+##    1.1552343    0.3096039</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="kw">summary</span>(<span class="kw">lm</span>(alturamujer<span class="op">~</span>alturahombre))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = alturamujer ~ alturahombre)
+## 
+## Residuals:
+##         1         2         3         4         5 
+##  0.017976 -0.006793 -0.001561 -0.017041 -0.018713 
+##         6         7 
+## -0.020386  0.046518 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   1.15523    0.14120   8.181 0.000444 ***
+## alturahombre  0.30960    0.08068   3.838 0.012153 *  
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.0268 on 5 degrees of freedom
+## Multiple R-squared:  0.7465, Adjusted R-squared:  0.6959 
+## F-statistic: 14.73 on 1 and 5 DF,  p-value: 0.01215</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># las 7 parejas de novios:</span></span>
+<span id="cb67-2"><a href="#cb67-2"></a><span class="kw">plot</span>(alturahombre, alturamujer, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="fl">1.5</span>,<span class="dv">2</span>), <span class="dt">ylim=</span><span class="kw">c</span>(<span class="fl">1.60</span>,<span class="fl">1.90</span>))</span>
+<span id="cb67-3"><a href="#cb67-3"></a><span class="co"># recta de la regresión lineal</span></span>
+<span id="cb67-4"><a href="#cb67-4"></a><span class="kw">points</span>(alturahombre, alturasmujerEstimadas, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</span>
+<span id="cb67-5"><a href="#cb67-5"></a><span class="co"># gráfica de cada residuo</span></span>
+<span id="cb67-6"><a href="#cb67-6"></a>i&lt;-<span class="kw">seq</span>(<span class="kw">length</span>(alturahombre))</span>
+<span id="cb67-7"><a href="#cb67-7"></a><span class="kw">arrows</span>(alturahombre[i],alturamujer[i],alturahombre[i],alturasmujerEstimadas[i], <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">length =</span> <span class="fl">0.05</span>, <span class="dt">lwd=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="index_files/figure-html/c15-1.png" /><!-- --></p>
+</div>
+<div id="suma-de-cuadrados-del-error" class="section level2">
+<h2>Suma de Cuadrados del Error</h2>
+<p>Encuentro s que es la estimación de sigma^2</p>
+<div class="figure">
+<img src="f1.png" alt="" />
+<p class="caption">Sum</p>
+</div>
+<div class="figure">
+<img src="f2.png" alt="" />
+<p class="caption">Sum</p>
+</div>
+</div>
+<div id="suma-total-de-los-cuadrados" class="section level2">
+<h2>Suma Total de los Cuadrados</h2>
+<p>cantidad de variación en yobs</p>
+<p><img src="f3.png" alt="Sum" /> ## Coeficiente que determina R^2</p>
+<div class="figure">
+<img src="f4.png" alt="" />
+<p class="caption">Sum</p>
+</div>
+<p>Mientras más alto es el valor de R2, más exitoso es el modelo de regresión lineal simple al explicar la variación de y.</p>
+</div>
+<div id="coeficiente-de-correlación" class="section level2">
+<h2>Coeficiente de Correlación</h2>
+<div class="figure">
+<img src="f5.png" alt="" />
+<p class="caption">Sum</p>
+</div>
+<ul>
+<li>Si los valores de xi e yi (ambos) están por encima de sus medias (x⎯⎯⎯, y⎯⎯⎯) ⟹ Sxy&gt;0.</li>
+<li>Si los valores de xi e yi (ambos) están por debajo de sus medias (x⎯⎯⎯, y⎯⎯⎯) ⟹ Sxy&gt;0.</li>
+<li>Si uno de los valores de xi e yi está por debajo de su correspondiente media ⟹ Sxy&lt;0, etc.</li>
+</ul>
+<div id="coeficiente-de-correlación-muestral" class="section level3">
+<h3>Coeficiente de correlación muestral</h3>
+<p><img src="f6.png" alt="Sum" /> El coeficiente r mide el grado de relación lineal entre las variables. Un valor de r cercano a 0 no es evidencia de la falta de una fuerte relación, sino sólo de la ausencia de una relación lineal, de modo que tal valor de r debe ser interpretado con precaución.</p>
+<ul>
+<li>r mide la fuerza de la asociación LINEAL entre X e Y.</li>
+<li>−1≤r≤1.</li>
+<li>r=0 implica que no hay relación lineal.</li>
+<li>r=±1 cuando todos los puntos caen sobre la recta.</li>
+<li>r tiene el mismo signo que la pendiente.</li>
+<li>mientras mayor el valor absoluto de r mayor la fuerza de la asociación.</li>
+<li>el valor de r no depende de las unidades de medición.</li>
+</ul>
+<p>B1 indica la pendiendte y l asociación entre la variables. las podemos determinar con ek <em>coeficiente de correlacion de Pearson</em> β1∗ˆ=β1∗ˆSx/Sy, con s el desvío estandar de x e y.</p>
+<p>Homocedasticidad = cuando la varianza del error condicional a las variables independientes es constante a lo largo de las observaciones. Todas las campanas, misma varianza.</p>
+</div>
+</div>
+<div id="test-de-shapiro-ts" class="section level2">
+<h2>Test de Shapiro {ts}</h2>
+<p>Para comprobar si los residuos de una regresión lineal siguen una distribución normal</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="kw">set.seed</span>(<span class="dv">5</span>)</span>
+<span id="cb68-2"><a href="#cb68-2"></a>xtest &lt;-<span class="st">  </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">5</span>, <span class="dt">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb68-3"><a href="#cb68-3"></a><span class="kw">shapiro.test</span>(xtest)</span></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  xtest
+## W = 0.98711, p-value = 0.445</code></pre>
+<p>Si los datos no siguen una distribución normal, entonces el test de Shapiro da un p-value pequeño y, por lo tanto, rechazamos la hipótesis nula</p>
+</div>
+<div id="regresión-lineal-en-r" class="section level2">
+<h2>Regresión lineal en R</h2>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>model&lt;-<span class="kw">lm</span>(BP<span class="op">~</span>Age)</span>
+<span id="cb70-2"><a href="#cb70-2"></a><span class="kw">coef</span>(model)</span></code></pre></div>
+<pre><code>## (Intercept)         Age 
+##  105.015251    1.250851</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="kw">resid</span>(model) <span class="co"># errores</span></span></code></pre></div>
+<pre><code>##          1          2          3          4          5 
+##  -3.822239  -1.049274   7.926911   3.930313   4.194772 
+##          6          7          8          9         10 
+##   6.174359  -6.561182  11.184566  -7.554377   1.940519 
+##         11         12         13         14         15 
+##   3.686267 -10.818837  14.696473  -1.812032 -15.056078 
+##         16         17         18         19         20 
+##   7.191370 -10.056078  -9.330745   1.452427   3.682864</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="kw">summary</span>(model) <span class="co">#valores estadísticos del modelo</span></span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = BP ~ Age)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -15.056  -6.809   1.696   4.690  14.697 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 105.0153    10.0387   10.46 4.44e-09 ***
+## Age           1.2509     0.1777    7.04 1.44e-06 ***
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 8.202 on 18 degrees of freedom
+## Multiple R-squared:  0.7336, Adjusted R-squared:  0.7188 
+## F-statistic: 49.56 on 1 and 18 DF,  p-value: 1.439e-06</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a>new &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Age =</span> <span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">45</span>, <span class="dv">50</span>, <span class="dv">55</span>, <span class="dv">60</span>, <span class="dv">65</span>, <span class="dv">70</span>))</span>
+<span id="cb76-2"><a href="#cb76-2"></a><span class="kw">predict</span>(modelo, new, <span class="dt">se.fit =</span> <span class="ot">TRUE</span>) <span class="co"># estimación puntual </span></span></code></pre></div>
+<pre><code>## $fit
+##        1        2        3        4        5        6 
+## 1.632024 1.656793 1.681561 1.697041 1.718713 1.740386 
+##        7 
+## 1.743482 
+## 
+## $se.fit
+##          1          2          3          4          5 
+## 0.01944369 0.01433478 0.01078077 0.01013622 0.01177031 
+##          6          7 
+## 0.01543120 0.01604851 
+## 
+## $df
+## [1] 5
+## 
+## $residual.scale
+## [1] 0.02680231</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="co"># modelo con todas las variables</span></span>
+<span id="cb78-2"><a href="#cb78-2"></a> <span class="co"># summary(lm(Mass~Fore + Waist + Height, data = mydata)) # con algunas variables</span></span></code></pre></div>
+</div>
+<div id="colinealidad" class="section level2">
+<h2>Colinealidad</h2>
+<p>Hay colinealidad cuando una de las variables independientes es combinación lineal de otras variables independientes.</p>
+<p>Una regresión lineal no puede tener colinealidad</p>
+<p>Determinante = 0, o muy chico, son L.D</p>
+</div>
+<div id="interacciones" class="section level2">
+<h2>Interacciones</h2>
+<p>Existe interacción cuando la asociación entre dos variables varía según los diferentes niveles de otra u otras variables.</p>
+</div>
+<div id="modelo-con-muchas-variables" class="section level2">
+<h2>Modelo con Muchas Variables</h2>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>x1 =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">80</span>, <span class="dt">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb79-2"><a href="#cb79-2"></a>x2 =<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">70</span>, <span class="dt">sd =</span> <span class="dv">5</span>)</span>
+<span id="cb79-3"><a href="#cb79-3"></a>x3 =<span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>x1 <span class="op">+</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>x2 <span class="op">+</span><span class="st"> </span><span class="dv">3</span></span>
+<span id="cb79-4"><a href="#cb79-4"></a>y1 =<span class="st"> </span><span class="dv">3</span><span class="op">+</span>x1<span class="op">+</span>x2<span class="op">+</span>x3<span class="op">+</span><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb79-5"><a href="#cb79-5"></a>model1 =<span class="st"> </span><span class="kw">lm</span>(y1<span class="op">~</span>x1<span class="op">+</span>x2<span class="op">+</span>x3)</span>
+<span id="cb79-6"><a href="#cb79-6"></a><span class="kw">summary</span>(model1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = y1 ~ x1 + x2 + x3)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.51025 -0.75193  0.04813  0.80929  1.60799 
+## 
+## Coefficients: (1 not defined because of singularities)
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  9.69967    4.61765   2.101   0.0738 .  
+## x1           2.95648    0.03798  77.841 1.52e-11 ***
+## x2           4.99428    0.06925  72.122 2.59e-11 ***
+## x3                NA         NA      NA       NA    
+## ---
+## Signif. codes:  
+## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.235 on 7 degrees of freedom
+## Multiple R-squared:  0.9996, Adjusted R-squared:  0.9995 
+## F-statistic:  9440 on 2 and 7 DF,  p-value: 9.799e-13</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
